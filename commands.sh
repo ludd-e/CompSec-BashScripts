@@ -4,16 +4,16 @@
 # CLIENT
 
 # UserIDs
-person[0]='0002021110'
-person[1]='9003032220'
-person[2]='8004043330'
-person[3]='7005054440'
-person[4]='0101'
-person[5]='0201'
-person[6]='0202'
-person[7]='0110'
-person[8]='0210'
-person[9]='7000'
+person[0]='0002021110' 	#Patient
+person[1]='9003032220' 	#Patient
+person[2]='8004043330' 	#Patient
+person[3]='7005054440' 	#Patient
+person[4]='0101' 	#Nurse
+person[5]='0201' 	#Nurse
+person[6]='0202' 	#Nurse
+person[7]='0110' 	#Dr
+person[8]='0210' 	#Dr
+person[9]='7000' 	#Gov
 
 #Passwords: Clientkeystores
 passwd[0]='abc123'
