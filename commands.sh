@@ -46,7 +46,7 @@ SKSpass='321password987654'
 SKPpass='paSSword'
 
 echo "Creating X.509 CA certificate, private key = CAkey.pem"
-openssl req -x509 -newkey rsa:1024 -keyout CAkey.pem -out CA.pem -passout pass:${CApass} -config CAconfig.cnf
+echo -e '.\n.\n.\n.\n.\nCA\n.\n' | openssl req -x509 -newkey rsa:1024 -keyout CAkey.pem -out CA.pem -passout pass:${CApass}
 
 echo "Creating truststore for client, clienttruststore, that contains CA"
 yes | keytool -import -file CA.pem -alias CA -keystore clienttruststore -storepass ${CTSpass}
