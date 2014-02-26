@@ -69,14 +69,14 @@ do
 done
 
 echo "CA signing CSRs"
-for (( i=0; i<${#person[$i]}; i++))
+for (( i=0; i<${#person[@]}; i++))
 do
 	CSR='CSR'-${person[$i]}
 	openssl x509 -req -in ${CSR} -CA CA.pem -CAkey CAkey.pem -out signed${CSR}.pem -CAcreateserial -passin pass:${CApass}
 done
 
 echo "Importing certificate chains into clientkeystores"
-for (( i=0; i<${#person[$i]}; i++))
+for (( i=0; i<${#person[@}; i++))
 do
 	ks=${person[$i]}-'store'
         sigCSR='signedCSR'-${person[$i]}.'pem'
