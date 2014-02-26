@@ -35,6 +35,7 @@ CTSpass='CLIENTpassTRUSTwordSTORE'
 
 #Password: key-pairs (Client)
 #CKPpass='password123'
+# De fyra sista siffrorna i användarnamnet + två stycken nollor.
 CKPpass[0]='111000'
 CKPpass[1]='222000'
 CKPpass[2]='333000'
