@@ -35,17 +35,6 @@ CTSpass='CLIENTpassTRUSTwordSTORE'
 
 #Password: key-pairs (Client)
 #CKPpass='password123'
-# De fyra sista siffrorna i användarnamnet + två stycken nollor.
-CKPpass[0]='111000'
-CKPpass[1]='222000'
-CKPpass[2]='333000'
-CKPpass[3]='444000'
-CKPpass[4]='110100'
-CKPpass[5]='120100'
-CKPpass[6]='120200'
-CKPpass[7]='111000'
-CKPpass[8]='121000'
-CKPpass[9]='170000'
 
 #Password: Servertruststore
 STSpass='server'
@@ -67,7 +56,7 @@ for (( i=0; i<${#person[@]}; i++ ))
 do
 	ks=${person[$i]}-'store'
 	pass=${passwd[$i]}
-	keytool -genkeypair -alias keypair -keystore ${ks} -dname "CN=${person[$i]}" -storepass ${pass} -keypass ${CKPpass[$i]}
+	keytool -genkeypair -alias keypair -keystore ${ks} -dname "CN=${person[$i]}" -storepass ${pass} -keypass ${pass}
 done
 
 echo "Creating CSRs for clientkeystores"
@@ -76,7 +65,7 @@ do
 	ks=${person[$i]}-'store'
 	CSR='CSR'-${person[$i]}
 	pass=${passwd[$i]}
-	keytool -certreq -alias keypair -keystore ${ks} -file ${CSR} -storepass ${pass} -keypass ${CKPpass[$i]}
+	keytool -certreq -alias keypair -keystore ${ks} -file ${CSR} -storepass ${pass} -keypass ${pass}
 done
 
 echo "CA signing CSRs"
@@ -93,7 +82,7 @@ do
         sigCSR='signedCSR'-${person[$i]}.'pem'
 	pass=${passwd[$i]}
 	yes | keytool -importcert -alias CA -file CA.pem -keystore ${ks}  -storepass ${pass}
-	keytool -importcert -alias keypair -file ${sigCSR} -keystore ${ks} -storepass ${pass} -keypass ${CKPpass[$i]}
+	keytool -importcert -alias keypair -file ${sigCSR} -keystore ${ks} -storepass ${pass} -keypass ${pass}
 done
 
 
