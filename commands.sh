@@ -49,7 +49,7 @@ echo "Creating X.509 CA certificate, private key = CAkey.pem"
 echo -e '.\n.\n.\n.\n.\nCA\n.\n' | openssl req -x509 -newkey rsa:1024 -keyout CAkey.pem -out CA.pem -passout pass:${CApass}
 
 echo "Creating truststore for client, clienttruststore, that contains CA"
-yes | keytool -import -file CA.pem -alias CA -keystore clienttruststore -storepass ${CTSpass}
+yes | keytool -import -file CA.pem -alias CAclient -keystore clienttruststore -storepass ${CTSpass}
 
 echo "Creating keypairs and keystores (Client)"
 for (( i=0; i<${#person[@]}; i++ ))
@@ -105,4 +105,4 @@ keytool -importcert -alias keypair -file signedCSR-server.pem -keystore serverke
 # keytool -list -keystore serverkeystore -v -keypass password
 
 echo "Creating serverside truststore"
-yes | keytool -import -file CA.pem -alias CA -keystore servertruststore -storepass ${STSpass}
+yes | keytool -import -file CA.pem -alias CAserver -keystore servertruststore -storepass ${STSpass}
