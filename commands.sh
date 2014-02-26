@@ -8,12 +8,12 @@ person[0]='190002021110' 	#Patient
 person[1]='199003032220' 	#Patient
 person[2]='198004043330' 	#Patient
 person[3]='197005054440' 	#Patient
-person[4]='0101' 	#Nurse
-person[5]='0201' 	#Nurse
-person[6]='0202' 	#Nurse
-person[7]='0110' 	#Dr
-person[8]='0210' 	#Dr
-person[9]='7000' 	#Gov
+person[4]='1101' 	#Nurse
+person[5]='1201' 	#Nurse
+person[6]='1202' 	#Nurse
+person[7]='1110' 	#Dr
+person[8]='1210' 	#Dr
+person[9]='1700' 	#Gov
 
 #Passwords: Clientkeystores
 passwd[0]='abc123'
