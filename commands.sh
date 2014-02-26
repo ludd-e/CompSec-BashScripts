@@ -76,7 +76,7 @@ do
 done
 
 echo "Importing certificate chains into clientkeystores"
-for (( i=0; i<${#person[@}; i++))
+for (( i=0; i<${#person[@]}; i++))
 do
 	ks=${person[$i]}-'store'
         sigCSR='signedCSR'-${person[$i]}.'pem'
