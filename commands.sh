@@ -34,16 +34,26 @@ CApass='passCAword'
 CTSpass='CLIENTpassTRUSTwordSTORE'
 
 #Password: key-pairs (Client)
-CKPpass='password123'
+#CKPpass='password123'
+CKPpass[0]='1110'
+CKPpass[1]='2220'
+CKPpass[2]='3330'
+CKPpass[3]='4440'
+CKPpass[4]='1101'
+CKPpass[5]='1201'
+CKPpass[6]='1202'
+CKPpass[7]='1110' 
+CKPpass[8]='1210'
+CKPpass[9]='1700' 
 
 #Password: Servertruststore
-STSpass='passwordabcde'
+STSpass='server'
 
 #Password: Serverkeystore
-SKSpass='321password987654'
+SKSpass='server'
 
 #Password: Key-pair (Server)
-SKPpass='paSSword'
+SKPpass='server'
 
 echo "Creating X.509 CA certificate, private key = CAkey.pem"
 echo -e '.\n.\n.\n.\n.\nCA\n.\n' | openssl req -x509 -newkey rsa:1024 -keyout CAkey.pem -out CA.pem -passout pass:${CApass}
@@ -56,7 +66,7 @@ for (( i=0; i<${#person[@]}; i++ ))
 do
 	ks=${person[$i]}-'store'
 	pass=${passwd[$i]}
-	keytool -genkeypair -alias keypair -keystore ${ks} -dname "CN=${person[$i]}" -storepass ${pass} -keypass ${CKPpass}
+	keytool -genkeypair -alias keypair -keystore ${ks} -dname "CN=${person[$i]}" -storepass ${pass} -keypass ${CKPpass[$i]}
 done
 
 echo "Creating CSRs for clientkeystores"
@@ -65,7 +75,7 @@ do
 	ks=${person[$i]}-'store'
 	CSR='CSR'-${person[$i]}
 	pass=${passwd[$i]}
-	keytool -certreq -alias keypair -keystore ${ks} -file ${CSR} -storepass ${pass} -keypass ${CKPpass}
+	keytool -certreq -alias keypair -keystore ${ks} -file ${CSR} -storepass ${pass} -keypass ${CKPpass[$i]}
 done
 
 echo "CA signing CSRs"
@@ -82,7 +92,7 @@ do
         sigCSR='signedCSR'-${person[$i]}.'pem'
 	pass=${passwd[$i]}
 	yes | keytool -importcert -alias CA -file CA.pem -keystore ${ks}  -storepass ${pass}
-	keytool -importcert -alias keypair -file ${sigCSR} -keystore ${ks} -storepass ${pass} -keypass ${CKPpass}
+	keytool -importcert -alias keypair -file ${sigCSR} -keystore ${ks} -storepass ${pass} -keypass ${CKPpass[$i]}
 done
 
 
