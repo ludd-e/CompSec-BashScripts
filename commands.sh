@@ -56,7 +56,7 @@ for (( i=0; i<${#person[@]}; i++ ))
 do
 	ks=${person[$i]}-'store'
 	pass=${passwd[$i]}
-	keytool -genkeypair -alias keypair -keystore ${ks} -dname "CN=${person[$i]}" -storepass ${pass} -keypass ${pass}
+	keytool -genkeypair -alias keypair -keystore ${ks} -dname "${person[$i]}" -storepass ${pass} -keypass ${pass}
 done
 
 echo "Creating CSRs for clientkeystores"
@@ -89,7 +89,7 @@ done
 # SERVER
 
 echo "Creating keypair, CN = server"
-keytool -genkeypair -alias keypair -keystore serverkeystore -dname "CN=server" -storepass ${SKSpass} -keypass ${SKPpass}
+keytool -genkeypair -alias keypair -keystore serverkeystore -dname "server" -storepass ${SKSpass} -keypass ${SKPpass}
 
 echo "Creating CSR for serverkeystore, CSR-server"
 keytool -certreq -alias keypair -keystore serverkeystore -file CSR-server -storepass ${SKSpass} -keypass ${SKPpass}
