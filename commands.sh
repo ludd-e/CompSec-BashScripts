@@ -16,16 +16,17 @@ person[8]='1210' 	#Dr
 person[9]='1700' 	#Gov
 
 #Passwords: Clientkeystores
+# Minst 6 tecken
 passwd[0]='abc123'
 passwd[1]='123456'
 passwd[2]='rockyou'
-passwd[3]='fdjhfjkdhsfjk'
-passwd[4]='password'
-passwd[5]='password'
-passwd[6]='password'
+passwd[3]='sjukhus'
+passwd[4]='HealthCare'
+passwd[5]='MyPassword'
+passwd[6]='medicin'
 passwd[7]='password'
-passwd[8]='password'
-passwd[9]='password'
+passwd[8]='M1e2d1i0C'
+passwd[9]='socialstyrelsen'
 
 #Password: CA
 CApass='passCAword'
@@ -35,6 +36,7 @@ CTSpass='CLIENTpassTRUSTwordSTORE'
 
 #Password: key-pairs (Client)
 #CKPpass='password123'
+#Samma som lösenordet till Keystores (Client)
 
 #Password: Servertruststore
 STSpass='server'
